@@ -17,5 +17,7 @@ class TodoListViews(View):
 
 class TodoDetailView(TodoMixin, View):
     template_name = 'Home/todo_detail.html'
-
+    def get(self, request, pk):
+        todo = Todo.objects.get(pk=pk)
+        return render(request, self.template_name, {'todo': todo})
 
